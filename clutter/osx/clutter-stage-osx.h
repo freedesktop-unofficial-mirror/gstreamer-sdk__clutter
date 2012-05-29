@@ -41,7 +41,11 @@ G_BEGIN_DECLS
 typedef struct _ClutterStageOSX      ClutterStageOSX;
 typedef struct _ClutterStageOSXClass ClutterStageOSXClass;
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED == MAC_OS_X_VERSION_10_5
+@interface ClutterGLWindow : NSWindow
+#else
 @interface ClutterGLWindow : NSWindow <NSWindowDelegate>
+#endif
 {
 @public
   ClutterStageOSX *stage_osx;
